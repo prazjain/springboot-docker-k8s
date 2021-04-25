@@ -1,0 +1,13 @@
+apiVersion: skaffold/v2beta14
+kind: Config
+metadata:
+  name: springboot-docker-k8s
+build:
+  artifacts:
+  - image: springboot-docker-k8s
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - local-docker-k8s.yaml

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
     @GetMapping(path="/api/hello")
     public ResponseEntity<?> getMessage() {
-        return ResponseEntity.ok().body("Hello World from Spring boot project deployed on K8s via Docker");
+        return ResponseEntity.ok().body("Hello World from Spring boot on K8s with Docker container via Skaffold");
     }
     @GetMapping(path="/")
     public ResponseEntity<?> get() {

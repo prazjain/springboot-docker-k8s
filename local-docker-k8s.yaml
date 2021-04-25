@@ -1,0 +1,32 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: springboot-docker-k8s
+spec:
+  selector:
+    app: springboot-docker-k8s
+  ports:
+    - protocol: TCP
+      port: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-docker-k8s
+spec:
+  selector:
+    matchLabels:
+      app: springboot-docker-k8s
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: springboot-docker-k8s
+    spec:
+      containers:
+        - name: springboot-docker-k8s
+          image: springboot-docker-k8s:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
