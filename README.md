@@ -14,7 +14,8 @@ Remove the image from local images (we will fetch it from hub)
 `docker rmi -f prashant4life/springboot-docker-k8s`  
 Fetch docker image from docker hub and run in local container  
 `docker run --name springboot-docker-k8s -p 8080:8080 -d prashant4life/springboot-docker-k8s:latest`  
-
+See logs  
+`docker logs --follow springboot-docker-k8s`  
 ---
 
 ## Run on Kubernetes
@@ -26,7 +27,7 @@ Upload the file to kubernetes cluster (lets say google cloud), then run below co
 Steps to expose port on Google K8s cluster https://www.youtube.com/watch?v=SzbeDqBSRkc  
 
 Below are steps to run the app in local k8s cluster using commands:  
-
+`kubectl apply -f local-docker-k8s.yaml`  
 ---
 
 ## Run on Kubernetes using Minikube
@@ -50,7 +51,7 @@ Install Minikube
 `kubectl logs <pod id>`  
 - Create Service and expose external endpoint  
 `kubectl expose deployment springboot-docker-k8s --type=NodePort`  
-- Verify the service was created successfully, and check the port it is exposed on  
+- Verify the service has created successfully, and check the port it is exposed on  
 `kubectl get services`  
 - Invoke the endpoint in browser (this will give info about service and also invoke it in browser)  
 `minikube service springboot-docker-k8s`  
